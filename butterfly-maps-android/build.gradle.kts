@@ -69,7 +69,9 @@ dependencies {
     androidTestImplementation("androidx.test:runner:1.3.0")
     androidTestImplementation("com.android.support.test.espresso:espresso-core:3.0.2")
     api("com.google.android.gms:play-services-maps:17.0.0")
-    api("com.google.android.libraries.places:places:2.3.0")
+    api("com.google.android.libraries.places:places:2.4.0")
+    api("io.reactivex.rxjava2:rxkotlin:2.4.0")
+    api("io.reactivex.rxjava2:rxandroid:2.1.1")
 }
 
 tasks.create("sourceJar", Jar::class) {
