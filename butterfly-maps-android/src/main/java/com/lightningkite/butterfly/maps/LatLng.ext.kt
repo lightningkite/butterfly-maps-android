@@ -4,5 +4,5 @@ import com.google.android.gms.maps.model.LatLng
 import com.lightningkite.butterfly.location.GeoCoordinate
 
 fun GeoCoordinate.toMaps(): LatLng = LatLng(latitude, longitude)
-fun LatLng.toKhrysalis(): GeoCoordinate =
+fun LatLng.toButterfly(): GeoCoordinate =
     GeoCoordinate(latitude, longitude)

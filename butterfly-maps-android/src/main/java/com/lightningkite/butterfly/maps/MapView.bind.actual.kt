@@ -134,14 +134,14 @@ fun MapView.bindSelect(
 
         map.setOnMapLongClickListener { coord ->
             suppressAnimation = true
-            position.value = coord.toKhrysalis()
+            position.value = coord.toButterfly()
             suppressAnimation = false
         }
         map.setOnMarkerDragListener(object : GoogleMap.OnMarkerDragListener {
             override fun onMarkerDragEnd(marker: Marker) {
                 if (!suppress) {
                     suppress = true
-                    position.value = marker.position.toKhrysalis()
+                    position.value = marker.position.toButterfly()
                     suppress = false
                 }
             }
