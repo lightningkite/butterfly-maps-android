@@ -34,8 +34,8 @@ apply(plugin = "com.lightningkite.khrysalis")
 configure<KhrysalisPluginExtension> {
     projectName = "ButterflyMaps"
     organizationName = "Lightning Kite"
-    overrideIosFolder = "../ios-maps"
-    overrideWebFolder = "../web-maps"
+    overrideIosFolder = project.projectDir.resolve("../../butterfly-maps-ios").toString()
+    overrideWebFolder = project.projectDir.resolve("../../butterfly-maps-web").toString()
 }
 
 group = "com.lightningkite.butterfly"
