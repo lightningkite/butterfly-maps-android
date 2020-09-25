@@ -10,6 +10,7 @@ import com.google.android.libraries.places.api.model.TypeFilter
 import com.google.android.libraries.places.api.net.FetchPlaceRequest
 import com.google.android.libraries.places.api.net.FetchPlaceResponse
 import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest
+import com.lightningkite.butterfly.android.ActivityAccess
 import com.lightningkite.butterfly.observables.ObservableProperty
 import com.lightningkite.butterfly.observables.observableNN
 import com.lightningkite.butterfly.observables.subscribeBy
@@ -17,7 +18,6 @@ import com.lightningkite.butterfly.post
 import com.lightningkite.butterfly.rx.DisposeCondition
 import com.lightningkite.butterfly.rx.forever
 import com.lightningkite.butterfly.rx.until
-import com.lightningkite.butterfly.views.ViewDependency
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.rxkotlin.subscribeBy
@@ -25,7 +25,7 @@ import io.reactivex.subjects.PublishSubject
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-class PlacesAutocomplete(dependency: ViewDependency) {
+class PlacesAutocomplete(dependency: ActivityAccess) {
     private val client = Places.createClient(dependency.context)
     private var token: AutocompleteSessionToken? = AutocompleteSessionToken.newInstance()
     private var working = false

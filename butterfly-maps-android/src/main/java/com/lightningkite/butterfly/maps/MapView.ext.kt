@@ -6,6 +6,7 @@ import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.lightningkite.butterfly.android.ActivityAccess
 import com.lightningkite.butterfly.location.GeoCoordinate
 import com.lightningkite.butterfly.observables.MutableObservableProperty
 import com.lightningkite.butterfly.observables.ObservableProperty
@@ -15,21 +16,19 @@ import com.lightningkite.butterfly.rx.DisposableLambda
 import com.lightningkite.butterfly.rx.addWeak
 import com.lightningkite.butterfly.rx.removed
 import com.lightningkite.butterfly.rx.until
-import com.lightningkite.butterfly.unownedSelf
-import com.lightningkite.butterfly.views.ViewDependency
 
-fun MapView.bind(dependency: ViewDependency, style: String? = null) {
+fun MapView.bind(dependency: ActivityAccess, style: String? = null) {
     var resumed = true
     var destroyed = false
     this.onCreate(dependency.savedInstanceState)
     this.onResume()
-    dependency.onResume.subscribe { value ->
+    dependency.onResume.subscribe { _ ->
         if(!resumed){
             resumed = true
             this.onResume()
         }
     }.until(removed)
-    dependency.onPause.subscribe { value ->
+    dependency.onPause.subscribe { _ ->
         if(resumed){
             resumed = false
             this.onPause()
@@ -38,10 +37,10 @@ fun MapView.bind(dependency: ViewDependency, style: String? = null) {
     dependency.onSaveInstanceState.subscribe { value ->
         this.onSaveInstanceState(value)
     }.until(removed)
-    dependency.onLowMemory.subscribe { value ->
+    dependency.onLowMemory.subscribe { _ ->
         this.onLowMemory()
     }.until(removed)
-    dependency.onDestroy.subscribe { value ->
+    dependency.onDestroy.subscribe { _ ->
         if(!destroyed){
             destroyed = true
             this.onDestroy()
@@ -65,7 +64,7 @@ fun MapView.bind(dependency: ViewDependency, style: String? = null) {
 }
 
 fun MapView.bindView(
-    dependency: ViewDependency,
+    dependency: ActivityAccess,
     position: ObservableProperty<GeoCoordinate?>,
     zoomLevel: Float = 15f,
     animate: Boolean = true,
@@ -95,7 +94,7 @@ fun MapView.bindView(
 
 
 fun MapView.bindSelect(
-    dependency: ViewDependency,
+    dependency: ActivityAccess,
     position: MutableObservableProperty<GeoCoordinate?>,
     zoomLevel: Float = 15f,
     animate: Boolean = true,
