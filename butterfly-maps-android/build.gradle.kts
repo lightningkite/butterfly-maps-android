@@ -1,5 +1,4 @@
-import com.lightningkite.khrysalis.KhrysalisSettings
-import com.lightningkite.khrysalis.gradle.KhrysalisPluginExtension
+
 
 fun DependencyHandler.elastic(notation: String): Dependency {
     val projectName = notation.substringAfter(':').substringBefore(':')
@@ -18,9 +17,6 @@ buildscript {
         jcenter()
         mavenLocal()
     }
-    dependencies {
-        classpath("com.lightningkite.khrysalis:plugin:0.1.0")
-    }
 }
 
 plugins {
@@ -28,14 +24,6 @@ plugins {
     id("kotlin-android")
     id("kotlin-android-extensions")
     id("digital.wup.android-maven-publish") version "3.6.2"
-}
-apply(plugin = "com.lightningkite.khrysalis")
-
-configure<KhrysalisPluginExtension> {
-    projectName = "ButterflyMaps"
-    organizationName = "Lightning Kite"
-    overrideIosFolder = project.projectDir.resolve("../../butterfly-maps-ios").toString()
-    overrideWebFolder = project.projectDir.resolve("../../butterfly-maps-web").toString()
 }
 
 group = "com.lightningkite.butterfly"
