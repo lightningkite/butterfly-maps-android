@@ -18,7 +18,7 @@ jobs:
           java-version: 8
       - uses: eskatos/gradle-command-action@v1
         with:
-          arguments: ":butterfly-android:test"
+          arguments: ":butterfly-maps-android:test"
           wrapper-cache-enabled: true
           dependencies-cache-enabled: true
           configuration-cache-enabled: true
