@@ -70,6 +70,7 @@ tasks {
         archives(javadocJar)
     }
 }
+
 afterEvaluate {
     publishing {
         publications {
@@ -100,6 +101,14 @@ afterEvaluate {
             props?.getProperty("signingPassword") ?: project.properties["signingPassword"]?.toString()
         useInMemoryPgpKeys(signingKey, signingPassword)
         sign(configurations.archives.get())
+    }
+}
+
+tasks.register("uploadSnapshot"){
+    group="upload"
+    finalizedBy("uploadArchives")
+    doLast{
+        project.version = project.version.toString() + "-SNAPSHOT"
     }
 }
 
