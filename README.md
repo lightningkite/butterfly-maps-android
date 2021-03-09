@@ -1,2 +1,2 @@
 # butterfly-maps-android
-[![UnitTests](https://github.com/lightningkite/butterfly-maps-android/actions/workflows/UnitTests.yml/badge.svg)](https://github.com/lightningkite/butterfly-maps-android/actions/workflows/UnitTests.yml)
+[![Unit Test](https://github.com/lightningkite/butterfly-maps-android/actions/workflows/UnitTestAndSnapshot.yml/badge.svg)](https://github.com/lightningkite/butterfly-maps-android/actions/workflows/UnitTestAndSnapshot.yml)
