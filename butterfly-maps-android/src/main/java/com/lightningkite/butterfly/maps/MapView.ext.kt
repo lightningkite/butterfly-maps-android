@@ -6,16 +6,10 @@ import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import com.lightningkite.butterfly.android.ActivityAccess
 import com.lightningkite.butterfly.location.GeoCoordinate
-import com.lightningkite.butterfly.observables.MutableObservableProperty
-import com.lightningkite.butterfly.observables.ObservableProperty
-import com.lightningkite.butterfly.observables.addAndRunWeak
-import com.lightningkite.butterfly.observables.subscribeBy
-import com.lightningkite.butterfly.rx.DisposableLambda
-import com.lightningkite.butterfly.rx.addWeak
-import com.lightningkite.butterfly.rx.removed
-import com.lightningkite.butterfly.rx.until
+import com.lightningkite.rxkotlinproperty.*
+import com.lightningkite.rxkotlinproperty.android.removed
+import com.lightningkite.rxkotlinproperty.viewgenerators.ActivityAccess
 
 fun MapView.bind(dependency: ActivityAccess, style: String? = null) {
     var resumed = true
@@ -65,7 +59,7 @@ fun MapView.bind(dependency: ActivityAccess, style: String? = null) {
 
 fun MapView.bindView(
     dependency: ActivityAccess,
-    position: ObservableProperty<GeoCoordinate?>,
+    position: Property<GeoCoordinate?>,
     zoomLevel: Float = 15f,
     animate: Boolean = true,
     style: String? = null
@@ -95,7 +89,7 @@ fun MapView.bindView(
 
 fun MapView.bindSelect(
     dependency: ActivityAccess,
-    position: MutableObservableProperty<GeoCoordinate?>,
+    position: MutableProperty<GeoCoordinate?>,
     zoomLevel: Float = 15f,
     animate: Boolean = true,
     style: String? = null

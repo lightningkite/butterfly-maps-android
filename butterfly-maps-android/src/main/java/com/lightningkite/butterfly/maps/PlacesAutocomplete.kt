@@ -10,14 +10,12 @@ import com.google.android.libraries.places.api.model.TypeFilter
 import com.google.android.libraries.places.api.net.FetchPlaceRequest
 import com.google.android.libraries.places.api.net.FetchPlaceResponse
 import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest
-import com.lightningkite.butterfly.android.ActivityAccess
-import com.lightningkite.butterfly.observables.ObservableProperty
-import com.lightningkite.butterfly.observables.observableNN
-import com.lightningkite.butterfly.observables.subscribeBy
-import com.lightningkite.butterfly.post
-import com.lightningkite.butterfly.rx.DisposeCondition
-import com.lightningkite.butterfly.rx.forever
-import com.lightningkite.butterfly.rx.until
+import com.lightningkite.rxkotlinproperty.DisposeCondition
+import com.lightningkite.rxkotlinproperty.Property
+import com.lightningkite.rxkotlinproperty.observableNN
+import com.lightningkite.rxkotlinproperty.until
+import com.lightningkite.rxkotlinproperty.viewgenerators.ActivityAccess
+import com.lightningkite.rxkotlinproperty.viewgenerators.post
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.rxkotlin.subscribeBy
@@ -75,7 +73,7 @@ class PlacesAutocomplete(dependency: ActivityAccess) {
     }
 
     fun request(
-        query: ObservableProperty<String>,
+        query: Property<String>,
         disposeCondition: DisposeCondition,
         filter: TypeFilter? = null
     ): Observable<List<AutocompletePrediction>> {
