@@ -19,7 +19,7 @@ plugins {
 }
 
 group = "com.lightningkite.butterfly"
-version = "0.1.2"
+version = "1.0.0"
 
 val props = project.rootProject.file("local.properties").takeIf { it.exists() }?.inputStream()?.use { stream ->
     Properties().apply { load(stream) }
@@ -65,7 +65,7 @@ android {
         minSdkVersion(21)
         targetSdkVersion(30)
         versionCode = 1
-        versionName = "1.0.0"
+        versionName = "0.1.2"
     }
     compileOptions {
         targetCompatibility = JavaVersion.VERSION_1_8
