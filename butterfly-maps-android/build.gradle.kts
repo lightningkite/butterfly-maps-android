@@ -14,7 +14,6 @@ fun DependencyHandler.elastic(notation: String): Dependency {
 buildscript {
     repositories {
         google()
-        jcenter()
         mavenLocal()
     }
 }
@@ -30,7 +29,6 @@ group = "com.lightningkite.butterfly"
 version = "0.1.1"
 
 repositories {
-    jcenter()
     mavenCentral()
     maven("https://jitpack.io")
     google()
@@ -57,7 +55,7 @@ dependencies {
     androidTestImplementation("androidx.test:runner:1.3.0")
     androidTestImplementation("com.android.support.test.espresso:espresso-core:3.0.2")
     api("com.google.android.gms:play-services-maps:17.0.0")
-    api("com.google.android.libraries.places:places:2.4.0")
+    api("com.google.android.libraries.places:places:2.5.0")
     api("io.reactivex.rxjava2:rxkotlin:2.4.0")
     api("io.reactivex.rxjava2:rxandroid:2.1.1")
 }
